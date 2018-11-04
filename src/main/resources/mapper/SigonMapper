@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.csu.carefree.Persistence.SigonMapper">
+    <cache/>
+
+    <select id="getSigonByUsername" parameterType="java.lang.String" resultType="org.csu.ecmusic.model.Account.Sigon">
+        SELECT
+        USERNAME, PASSWORD
+        FROM Account
+        WHERE USERNAME = #{username}
+    </select>
+
+    <insert id="setSigon">
+        INSERT INTO Account
+        (USERNAME, PASSWORD)
+        VALUES
+        (#(username), #(password))
+    </insert>
+
+    <update id="updateSigon">
+        UPDATE Account SET
+        PASSWORD = #{password}
+        WHERE USERNAME =  #{username}
+    </update>
+
+</mapper>
